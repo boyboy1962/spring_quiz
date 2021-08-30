@@ -16,7 +16,7 @@ public class RealEstateRestController {
 	@Autowired
 	private RealEstateBO  realEstateBO;
 	
-	// url: http://localhost:88/lessson03/quiz01/1?id=#
+	// url: http://localhost:88/lesson03/quiz01/1?id=#
 	@RequestMapping("/lesson03/quiz01/1")
 	public RealEstate quiz01_1(
 			@RequestParam("id") int id
@@ -41,5 +41,21 @@ public class RealEstateRestController {
 			) {
 		List<RealEstate> realEstate = realEstateBO.getRealEstateByAreaAndPrice(area, price);
 		return realEstate;
-	}	
+	}
+	
+//	// url: http://localhost:88/lesson03/quiz02/1
+//	@RequestMapping("/lesson03/quiz02/1")
+//	public String quiz02_1() {
+//		RealEstate realEstate = new RealEstate();
+//		realEstate.setRealtorId(3);
+//		realEstate.setAddress("푸르지용 리버 303동 1104호");
+//		realEstate.setArea(89);
+//		realEstate.setType("매매");
+//		realEstate.setPrice(1000000);
+//		realEstate.setRentPrice(null);
+//		
+//		int rowCount = realEstateBO.addRealEstate(realEstate);
+//		
+//		return "성골 : " + rowCount;
+//	}
 }
