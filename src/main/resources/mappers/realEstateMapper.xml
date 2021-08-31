@@ -115,4 +115,15 @@
  		
  	</insert>
  	
+ 	<update id="updateRealEstate" parameterType="map">
+ 		UPDATE
+ 			`real_estate`
+ 		SET
+ 			`type` = #{type}
+ 			, `price` = #{price}
+ 			, `updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{id}
+ 	</update>
+ 	
  </mapper>
