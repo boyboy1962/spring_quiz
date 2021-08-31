@@ -11,7 +11,7 @@ import com.quiz.lesson03.bo.RealEstateBO;
 public class Lesson03Quiz04RestController {
 	
 	@Autowired
-	RealEstateBO realEstateBO;
+	private RealEstateBO realEstateBO; // 관례적으로 private를 붙여줁다. 
 	
 	// 요청 URL : http://localhost:88/lesson03/quiz04/1?id=21
 	@RequestMapping("/lesson03/quiz04/1")
