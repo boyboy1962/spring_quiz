@@ -15,4 +15,13 @@ public class SellerBO {
 	public int addSeller(Seller seller) {
 		return sellerDAO.insertSeller(seller);
 	}
+	
+	public Seller getLastSeller() {
+		return sellerDAO.selectLastSeller();
+	}
+	
+	public Seller getSellerById(int id) {
+		return sellerDAO.selectSellerById(id);
+	}
+
 }
