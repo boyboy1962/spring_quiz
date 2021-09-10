@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+/*body{background-color: aqua;}*/
+nav{background-color: rgb(102, 148,236); color: white}
+nav a{text-decoration:none; color:#fff}
+nav a:hover{text-decoration:none; color: rgb(255,255,128); font-weight: bold;}
+
+footer small{color: #999}
