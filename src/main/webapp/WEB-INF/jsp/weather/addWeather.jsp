@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div class="col-10">
 	<h3 class="m-4">날씨 입력</h3>
-	<form method="post" action="/lesson04/quiz01/add_seller">
+	<form method="post" action="/afterAddWeather">
 		<div class="">
 			<div class="d-flex">
 				<div class="input-group mb-5 mr-3">
@@ -14,7 +14,7 @@
 				  	<select class="form-select" id="Select01" name="weather">
 				    	<option selected>선택하세요</option>
 				    	<option>맑음</option>
-				    	<option>구름 조금</option>
+				    	<option>구름조금</option>
 				    	<option>흐림</option>
 				    	<option>비</option>
 				  	</select>
@@ -33,17 +33,17 @@
 			<div class="d-flex justify-content-around">
 				<div class="input-group mr-3 mb-5">
 					<span class="input-group-text">기온</span>
-					<input type="text" class="form-control" id="startDate" name="date" >
+					<input type="text" class="form-control" id="startDate" name="temperatures" >
 					<span class="input-group-text">°C</span>
 				</div>
 				<div class="input-group mr-3 mb-5">
 					<span class="input-group-text">강수량</span>
-					<input type="text" class="form-control" id="startDate" name="date" >
+					<input type="text" class="form-control" id="startDate" name="precipitation" >
 					<span class="input-group-text">mm</span>
 				</div>
 				<div class="input-group mb-5">
 					<span class="input-group-text">풍속</span>
-					<input type="text" class="form-control" id="startDate" name="date" >
+					<input type="text" class="form-control" id="startDate" name="windSpeed" >
 					<span class="input-group-text">km/h</span>
 				</div>
 			</div>
