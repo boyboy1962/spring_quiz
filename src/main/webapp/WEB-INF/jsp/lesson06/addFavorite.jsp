@@ -88,7 +88,7 @@
 						if (data.result == 'success'){
 							location.href = "/lesson06/Quiz01/favoriteList";
 						} else {
-							alert("로직상에서 실패하엿습니다. ")
+							alert("로직상에서 실패하엿습니다.")
 						}
 					}
 					, error: function(e) {
