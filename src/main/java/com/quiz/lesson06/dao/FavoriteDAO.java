@@ -15,4 +15,6 @@ public interface FavoriteDAO {
 			, @Param("url") String url
 			);
 	public List<Favorite> selectFavoriteList();
+	public boolean existNewUserByUrl(String url);
+	public Favorite selectFavoriteByUrl(String url);
 }

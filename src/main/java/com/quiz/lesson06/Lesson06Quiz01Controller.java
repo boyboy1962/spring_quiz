@@ -50,9 +50,9 @@ public class Lesson06Quiz01Controller {
 		
 	}
 	
-	@RequestMapping("favoriteList")
+	@RequestMapping("/favoriteList")
 	public String favoriteList(Model model) {
-		// 유dptj wmfru ckwrl ahrfhrdmf Select
+		// DB에서 즐겨 찾기 목록을 Select
 		List<Favorite> favoriteList = favoriteBO.getFavoriteList();
 		
 		// model 객체에 저장한다.
@@ -60,4 +60,25 @@ public class Lesson06Quiz01Controller {
 		
 		return "lesson06/favoriteList";
 	}
+	
+	@PostMapping("/check_duplication_url")
+	@ResponseBody
+	public Map<String, Boolean> checkDuplicationUrl(
+				@RequestParam("url") String url
+			) {
+		// url DB 조회 중복 체크
+		Favorite favorite = favoriteBO.getFavoriteByUrl(url);
+		
+		// 결과 map 구성
+		
+		Map<String, Boolean>  result = new HashMap<>();
+		result.put("isDuplication", false);
+		
+		if (favorite != null) {			
+			result.put("isDuplication", true);		
+		}
+		return result;
+		
+	}
+	
 }

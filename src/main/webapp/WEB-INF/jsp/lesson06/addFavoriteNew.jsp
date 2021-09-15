@@ -31,17 +31,17 @@
 			<label for="name">제목</label>
 			<input type="text" id="name" class="form-control col-3">
 		</div>
-		<div class="form-group">
-			<label for="url">url 주소</label>
-			<div class="form-inline ">
-				<input type="text" id="url" class="form-control col-10">
-				<button type="button" id="checkDuplicatedBtn" class="btn btn-info">중복확인</button>
+		<div class=" ">
+			<div class="form-group">
+				<label for="url">url 주소</label>
+				<div class="form-group d-flex">
+					<input type="text" id="url" class="form-control">
+					<button type="button" id="urlCheckBtn" class="btn btn-primary ml-3">중복확인</button>
+				</div>
+				<div id="urlStatusArea"><br><br></div>
 			</div>
-			<small id="isDuplicationText" class="text-danger d-none">중복된 url 입니다.</small>
-			<small id="availableUrlText" class="text-success d-none">저장 가능한 url 입니다.</small>
 			
 		</div>
-		
 		<button type="button" id="addBtn" class="btn btn-success btn-block">추가</button>
 	</div>
 	
@@ -60,37 +60,6 @@
 		})*/
 		
 		$(document).ready(function(){
-			// quiz02 ) url 중복 확인
-			$('#checkDuplicatedBtn').on('click', function(){
-				let url = $('#url').val().trim();
-				if (url == ''){
-					alert("url을 입력해 주세요.")
-					return;
-				}
-				
-				$.ajax({
-					type:'post'
-					, url: '/lesson06/Quiz01/check_duplication_url'
-					, data: {'url':url}
-					, success: function(data) {
-						// 중복이라면 {"isDuplication":true}
-						if(data.isDuplication == true) {
-							// 중복
-							$('#isDuplicationText').removeClass('d-none');
-							$('#availableUrlText').addClass('d-none');
-						} else {
-							// 사용가능
-							$('#isDuplicationText').addClass('d-none');
-							$('#availableUrlText').removeClass('d-none');
-							
-						}
-					}
-					, error: function(e){
-						alert("error " + e)
-					}
-				})
-			})
-			
 			$('#addBtn').on('click', function() {
 				//alert("추가 버튼 클릭");
 				let name = $('#name').val().trim();
@@ -132,7 +101,42 @@
 						alert("에러: " + e);
 					}
 				});
-			});		
+			});
+			
+			$('#urlCheckBtn').on('click', function() {
+				let url = $('#url').val().trim();
+				$('#urlStatusArea').empty();
+				
+				//validation check
+				if (url == ''){
+					$('#urlStatusArea').append('<small class="text-danger"> url이 없습니다.</small><br><br>');
+					return;
+				}
+				
+				if (url.startsWith("http") == false && url.startsWith('https') == false) {
+					$('#urlStatusArea').append('<small class="text-danger"> 주소형식이 잘못되었습니다.</small><br><small class="text-primary"> "https://" 또는 "http://"를 넣어주세요.</small>');
+					return;
+				}
+				
+				$.ajax({
+					type: 'get'
+					, url: '/lesson06/Quiz02/isDuplication'
+					, data: {'url':url}
+					, success: function(data) {
+						//alert(data.is_duplication);
+						if (data.is_duplication == true){
+						$('#urlStatusArea').append('<small class="text-danger"> 중복된 url입니다.</small><br><br>')							
+						} else {							
+						$('#urlStatusArea').append('<small class="text-success"> 저장이 가능한 url입니다.</small><br><br>')							
+						}
+					}
+					, error: function(e){
+						alert("AJAX 통신이 실패:" + e);
+					}
+				});
+			})
+				
+			
 			
 		});
 	</script>
