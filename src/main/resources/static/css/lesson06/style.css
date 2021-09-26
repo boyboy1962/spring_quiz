@@ -1,0 +1,26 @@
+#warp {height: 1000px; width: 1200px;}
+
+header {height: 90px;}
+header a{text-decoration:none; color: olive;}
+header a:hover{text-decoration:none; color: olive;}
+header .logo {}
+
+nav {height: 40px; background-color: chocolate;}
+nav .nav-text {font-weight: bold; color: whitesmoke; text-decoration: none;}
+nav .nav-text:hover {color: whitesmoke;}
+nav .nav-item:hover {background-color: brown;}
+
+section {}
+section .banner {background-color: palevioletred; height: 450px;}
+section .interface {background-color: palegoldenrod; height: 300px;}
+section .front {background-color: saddlebrown;}
+section .front .front-text {font-weight: lighter; color: whitesmoke; font-size: 50px;}
+section .front a:hover {text-decoration: none; font-weight: lighter; color: whitesmoke; font-size: 50px;}
+section .middle {background-color: darkorange;}
+section .middle .middle-text{font-size: 25px; font-weight: normal; color: whitesmoke;}
+section .back {background-color: saddlebrown;}
+section .back h2{color: whitesmoke;}
+section .back h4{color: whitesmoke;}
+
+footer {height: 50px;}
+footer .light-font {color: #999; font-size: 12px;}

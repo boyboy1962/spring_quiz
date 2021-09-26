@@ -81,4 +81,22 @@ public class Lesson06Quiz01Controller {
 		
 	}
 	
+	@PostMapping("/delete_favorite")
+	@ResponseBody
+	public Map<String, String> deleteFavorite(
+				@RequestParam("favorite_id") int id
+			){
+		// DB delete - id
+		int deletedRow = favoriteBO.deleteFavoriteById(id);
+		
+		Map<String, String> result = new HashMap<>();
+		result.put("result" , "success");
+		if (deletedRow == 0) {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
+	
+	
 }

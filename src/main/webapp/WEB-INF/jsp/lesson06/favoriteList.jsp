@@ -34,10 +34,51 @@
 					<th>${favorite.id}</th>
 					<th>${favorite.name}</th>
 					<th>${favorite.url}</th>
+					<!-- 1/. value에 원하는 값을 담아 놓는다. -->
+					<%-- <td><button type="button" name="delBtn" class="removeBtn btn btn-danger " value="${favorite.id}">삭제</button> --%>
+					
+					<!-- 2. data를 이용해서 태그에 값을 임시 저정하기 -->
+					<td><button type="button" name="delBtn" class="removeBtn btn btn-danger" data-favorite-id="${favorite.id}">삭제</button>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<script>
+		$(document).ready(function(){
+			//(1) value에 원하는 값을 담아 놓는다.
+			/* $('td').on('click', 'button[name=delBtn]', function(){
+				//alert("삭제 버튼 클릭");
+				alert($(this).val()); //this는 반드시 외워야한다. 이거를 써야 해당되는 id를 받아 올 수 있다.
+				alert(e.target.value);
+			}); */
+			
+			// 2. data를 이용해서 태그에 값을 임시 저정하기
+			// 태그: 태그안에 data-favorite-id 		data- 그 뒤로부터는 우리가 이름을 정한다.(대문자 사용 X)
+			$('.removeBtn').on('click', function(){
+				let favoriteId = $(this).data('favorite-id');
+				alert(favoriteId);
+				
+				$.ajax({
+					type: "POST" // Get으로 하면 web 주소로 삭제를 할 수 있지만 post로만 호출이 가능하다.
+					, url: '/lesson06/Quiz01/delete_favorite'
+					, data: {'favorite_id':favoriteId}
+					, success: function(data) {
+						// json : 성공 : {"result":success} 실패 : {"result":fail}
+						if (data.result == 'success') {
+							//alert("성공");
+							location.reload(); // 새로고침
+						} else {
+							alert("삭제가 실패했습니다.");
+						}
+					}
+					, error: function(e) {						
+						alert("error:" + e);
+					}
+					
+				});
+			});
+		});
+	</script>
 </body>
 </html>
